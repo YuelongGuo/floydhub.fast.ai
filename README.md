@@ -3,9 +3,9 @@
 This is an examle of how to setup instance on floydhub to run lesson 1 (currently with the sample dataset) of the awesome deep learning course available at http://course.fast.ai/. 
 
 ## Set up floydhub account and working directory
-First, you'll need a floydhub account and install floyd CLI. Follow their online instruction at https://www.floydhub.com/welcome.
+First, you'll need a floydhub account and have the floyd CLI installed. Follow their online instruction at https://www.floydhub.com/welcome.
 
-Next, you'll want to create a local working directory in your local computer. I purposely emphasise the word local here is because to my understanding, floydhub will initiate new instance everytime base on your working directory content. All files in this directory will be uploaded to the floydhub cloud instance when you do <code> floyd run </code> (explained in details later). 
+Next, you'll want to create a working directory in your local computer. All files in this directory will be uploaded to the floydhub cloud instance when you do <code> floyd run </code> (explained in detail later). 
 
 <pre><code>
 mkdir ~/Projects/
@@ -25,16 +25,16 @@ Now, to fill in with a bit more details:
 
 #### scripts
 
-The fast.ai github repository (https://github.com/fastai/courses/tree/master/deeplearning1/nbs) includes files for all the phase I lessons. For the purpose of this example, and to keep it simple for starters, I copied only the bare minimul necessary files to the working directory. This includes:
+The fast.ai github repository (https://github.com/fastai/courses/tree/master/deeplearning1/nbs) includes files for all the phase I lessons. For the purpose of this example, and to keep it simple, I copied only the bare minimul necessary files to the working directory. This includes:
 * lesson1.ipynb
 * utils.py
 * vgg16.py
 * vgg16bn.py
-* some data to work with
+* some data to analyze
 
 #### data
 
-For simplicity, I only copied the dogscats sample dataset (dogscats/sample if you unzip the dogscats.zip at http://www.platform.ai/files/dogscats.zip). However, this is considered very bad practice, because you are creating a copy of the data every time you start a new cloud instance. Floydhub has some instruction on how to manage data seperately, which I tried but haven't had it all figured out. I'll keep trying because for the full dataset this is necessary.
+I only copied the dogscats sample dataset (dogscats/sample if you unzip the dogscats.zip at http://www.platform.ai/files/dogscats.zip). However, this is considered very bad practice, because I am creating a copy of the data every time I start a new cloud instance. Floydhub has some instruction on how to manage data seperately, which I tried but haven't had it all figured out. I'll keep trying because for the full dataset this is necessary.
 
 #### dependencies
 
