@@ -1,4 +1,3 @@
-# floydhub.fast.ai
 ## Introduction
 This is an examle of how to setup instance on floydhub to run lesson 1 (currently with the sample dataset) of the awesome deep learning course available at http://course.fast.ai/. 
 
