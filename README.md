@@ -20,7 +20,9 @@ git clone https://github.com/YuelongGuo/floydhub.fast.ai.git
 cd floydhub.fast.ai/
 </code></pre>
 
-Now, to fill in with a bit more details:
+You may skip to the next section "Start a floydnet instance" if you choose to skip reading the details.
+
+Well, to fill in a bit more details:
 
 #### scripts
 
