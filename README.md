@@ -106,10 +106,12 @@ floyd data upload
 
 After the data finished upload, you should see something like this:
 
+<pre>
 Creating data source. Uploading files ...
 DATA ID                 NAME                        VERSION
 ----------------------  ------------------------  ---------
 UMSaLZVseGPSsPCbYkZFZA  userID/dogscats.zipped:1          1
+</pre>
 
 Now, we are ready to unzip the data on floydnet.
 Again, start with an empty directory.
