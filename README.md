@@ -1,5 +1,5 @@
 ## Introduction
-This is an examle of how to setup instance on floydhub to run lesson 1 (currently with the sample dataset) of the awesome deep learning course available at http://course.fast.ai/. 
+This is an examle of how to setup instance on floydhub to run lesson 1 of the awesome deep learning course available at http://course.fast.ai/. This document was revised March 5th 2017 and now works with the full dogscats dataset.
 
 ## Set up floydhub account and working directory
 First, you'll need a floydhub account and have the floyd CLI installed. Follow their online instruction at https://www.floydhub.com/welcome.
@@ -29,11 +29,11 @@ The fast.ai github repository (https://github.com/fastai/courses/tree/master/dee
 * utils.py
 * vgg16.py
 * vgg16bn.py
-* some data to analyze
+* some sample data to work with
 
 #### data
 
-I only copied the dogscats sample dataset (dogscats/sample if you unzip the dogscats.zip at http://www.platform.ai/files/dogscats.zip). However, this is considered very bad practice, because I am creating a copy of the data every time I start a new cloud instance. Floydhub has some instruction on how to manage data seperately, which I tried but haven't had it all figured out. I'll keep trying because for the full dataset this is necessary.
+I copied the dogscats sample dataset (dogscats/sample if you unzip the dogscats.zip at http://www.platform.ai/files/dogscats.zip). However, this is considered very bad practice, because I am creating a copy of the data every time I start a new cloud instance. Please refer to the bottom section "Run for the full dogs and cats dataset" for data preperation best practice.
 
 #### dependencies
 
@@ -64,7 +64,7 @@ Wait for a few minutes, then you should get a website address in your console fo
 
 #### One more thing before running lesson 1 code
 
-We are almost there, but there is one more thing you need to configure - the keras.json file
+We are almost there, but there is one more thing we need to configure - the keras.json file
 
 Start a console session in jupyter notebook, then 
 
@@ -84,17 +84,64 @@ Now lesson 1 should run with the sample dataset.
 
 ## Run for the full dogs and cats dataset
 
-For the full dataset, it is recommended that you build a data object in the floydnet. Refer to http://docs.floydhub.com/commands/data/
-Then, specify the data id when you start a cloud instance:
+For the full dataset, it is recommended that you build a data object in the floydnet. 
+
+First, download the dogs and cats dataset to an empty folder: 
+
+<pre> <code>
+cd ~/Projects/
+mkdir floydhub.fast.ai.data.zipped
+cd floydhub.fast.ai.data.zipped
+wget http://www.platform.ai/files/dogscats.zip
+</code></pre>
+
+Next, upload the zipped dataset to floydnet, and create a floydnet dataset
 
 <pre><code>
+floyd data init dogscats.zipped
+floyd data upload
+</code></pre>
+
+After the data finished upload, you should see something like this:
+
+Creating data source. Uploading files ...
+DATA ID                 NAME                        VERSION
+----------------------  ------------------------  ---------
+UMSaLZVseGPSsPCbYkZFZA  userID/dogscats.zipped:1          1
+
+Now, we are ready to unzip the data on floydnet.
+Again, start with an empty directory.
+
+<pre> <code>
+cd ~/Projects/
+mkdir floydhub.fast.ai.data.unzip
+cd floydhub.fast.ai.data.unzip
+floyd init dogscats.unzip
+floyd run --gpu --data UMSaLZVseGPSsPCbYkZFZA "unzip /input/dogscats.zip -d /output"
+</code></pre>
+
+Please note:
+1. the data ID should be the one you see from the above step
+2. the mounted data is available in /input/ directory, and you need to direct the unzipped files to /output/ directory
+
+After this finishes, which took about 20 mins for me, you'll see in your floydhub UI interface, under "Data" section, a dataset userID/dogscats.unzip:1/output. On the right side, click View -> Advanced -> under Id, keep a record of your data Id. Mine is yz3A8G5vX5ZQxv5VVyD3GH
+
+Now, we are ready to create the actual floydnet workspace to start learning fast.ai!
+Assuming you have cloned this repo following the method running sample dataset.
+<pre><code>
+cd ~/Projects/floydhub.fast.ai/
+rm -r data
+floyd init dogscats
 floyd run \
   --mode jupyter \
-  --data data_ID_e.g._jq4ZXUCSVer4t65rWeyieG
+  --data yz3A8G5vX5ZQxv5VVyD3GH \
   --env theano:py2 \
   --gpu
 </code></pre>
 
-Then the data should be available in /input directory.
+Again, the data ID should be consistent with your unzipped data ID.
 
-After I try this out, I'll come back and share my experience. 
+The data is available in the /input directory. So make sure you change the path to "/input/dogscats/"
+
+Thanks to Sai for helping me out and pointing me to the right direction.
+Now, start enjoy your 100 hours free GPU computing resources provided by floydhub.
