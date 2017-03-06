@@ -22,7 +22,7 @@ cd floydhub.fast.ai/
 
 You may skip to the next section "Start a floydnet instance" if you choose to skip reading the details.
 
-Well, to fill in a bit more details:
+Well, a bit more details:
 
 #### scripts
 
@@ -90,7 +90,7 @@ For the full dataset, it is recommended that you build a data object in the floy
 
 First, download the dogs and cats dataset to an empty folder: 
 
-<pre> <code>
+<pre><code>
 cd ~/Projects/
 mkdir floydhub.fast.ai.data.zipped
 cd floydhub.fast.ai.data.zipped
@@ -106,17 +106,17 @@ floyd data upload
 
 After the data finished upload, you should see something like this:
 
-<pre>
+<pre><code>
 Creating data source. Uploading files ...
 DATA ID                 NAME                        VERSION
 ----------------------  ------------------------  ---------
 UMSaLZVseGPSsPCbYkZFZA  userID/dogscats.zipped:1          1
-</pre>
+</code></pre>
 
 Now, we are ready to unzip the data on floydnet.
 Again, start with an empty directory.
 
-<pre> <code>
+<pre><code>
 cd ~/Projects/
 mkdir floydhub.fast.ai.data.unzip
 cd floydhub.fast.ai.data.unzip
