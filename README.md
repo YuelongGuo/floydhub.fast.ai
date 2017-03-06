@@ -149,3 +149,5 @@ The data is available in the /input directory. So make sure you change the path 
 
 Thanks to Sai for helping me out and pointing me to the right direction.
 Now, start enjoy your 100 hours free GPU computing resources provided by floydhub.
+
+One epoch took around 677s for me when I tried it out. Not bad at all!
