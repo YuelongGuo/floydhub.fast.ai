@@ -35,7 +35,7 @@ The fast.ai github repository (https://github.com/fastai/courses/tree/master/dee
 
 #### data
 
-I copied the dogscats sample dataset (dogscats/sample if you unzip the dogscats.zip at http://www.platform.ai/files/dogscats.zip). However, this is considered very bad practice, because I am creating a copy of the data every time I start a new cloud instance. Please refer to the bottom section "Run for the full dogs and cats dataset" for data preperation best practice.
+I copied the dogscats sample dataset (dogscats/sample if you unzip the dogscats.zip at http://files.fast.ai/data/dogscats.zip). However, this is considered very bad practice, because I am creating a copy of the data every time I start a new cloud instance. Please refer to the bottom section "Run for the full dogs and cats dataset" for data preperation best practice.
 
 #### dependencies
 
@@ -94,7 +94,7 @@ First, download the dogs and cats dataset to an empty folder:
 cd ~/Projects/
 mkdir floydhub.fast.ai.data.zipped
 cd floydhub.fast.ai.data.zipped
-wget http://www.platform.ai/files/dogscats.zip
+wget http://files.fast.ai/data/dogscats.zip
 </code></pre>
 
 Next, upload the zipped dataset to floydnet, and create a floydnet dataset
